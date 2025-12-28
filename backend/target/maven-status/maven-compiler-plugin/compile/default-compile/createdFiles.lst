@@ -1,10 +1,16 @@
 com\example\demo\DemoApplication.class
 com\example\demo\blockchain\api\BlockCypherClient.class
+com\example\demo\auth\service\AuthService.class
 com\example\demo\blockchain\api\BlockchainComClient.class
 com\example\demo\blockchain\service\TransactionService$CoinSelectionResult.class
 com\example\demo\blockchain\controller\BlockchainController.class
+com\example\demo\auth\util\JwtUtil.class
+com\example\demo\auth\dto\AuthResponse.class
 com\example\demo\blockchain\model\UTXO.class
+com\example\demo\auth\config\SecurityConfig.class
 com\example\demo\blockchain\api\BlockchainAPI.class
+com\example\demo\auth\controller\AuthController.class
+com\example\demo\auth\dto\AuthRequest.class
 com\example\demo\blockchain\service\FeeCalculator.class
 com\example\demo\blockchain\model\TxInput.class
 com\example\demo\blockchain\model\TxOutput.class

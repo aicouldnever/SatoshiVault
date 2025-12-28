@@ -15,12 +15,13 @@ public class MainApp extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/wallet/app/view/auth/AuthView.fxml"));
         Parent root = loader.load();
         
-        Scene scene = new Scene(root, 600, 400);
+        Scene scene = new Scene(root, 1280, 720);
         
         // Apply theme based on user preference
         ThemeManager.applyTheme(scene);
         
         primaryStage.setTitle("Bitcoin Wallet - Login");
+        primaryStage.setResizable(false);
         primaryStage.setScene(scene);
         primaryStage.show();
     }

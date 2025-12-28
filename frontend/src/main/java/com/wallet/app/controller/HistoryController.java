@@ -2,8 +2,8 @@ package com.wallet.app.controller;
 
 import com.wallet.app.model.TransactionModel;
 import com.wallet.app.model.TransactionModel.Status;
-import com.wallet.app.service.MockTransactionService;
 import com.wallet.app.service.TransactionService;
+import com.wallet.app.service.TransactionServiceImpl;
 import com.wallet.app.util.CurrencyFormatter;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
@@ -46,7 +46,7 @@ public class HistoryController {
     
     @FXML
     public void initialize() {
-        transactionService = new MockTransactionService();
+        transactionService = new TransactionServiceImpl();
         allTransactions = transactionService.getTransactions();
         
         // Setup custom cell factory for transactions

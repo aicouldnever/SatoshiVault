@@ -405,3 +405,44 @@
     -fx-border-color: #F7931A;
     -fx-border-width: 1px;
 }
+
+/* Toast Notifications (ControlsFX) */
+.notification-bar {
+    -fx-background-color: #2d2d2d;
+    -fx-border-color: #3a3a3a;
+    -fx-border-width: 1px;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0, 0, 2);
+}
+
+.notification-bar .label {
+    -fx-text-fill: #e8e8e8;
+}
+
+.notification-bar.notification-pane-success {
+    -fx-border-color: #F7931A;
+    -fx-border-width: 2px;
+}
+
+.notification-bar.notification-pane-error {
+    -fx-border-color: #f87171;
+    -fx-border-width: 2px;
+}
+
+.notification-bar.notification-pane-warning {
+    -fx-border-color: #f59e0b;
+    -fx-border-width: 2px;
+}
+
+.notification-retry-button {
+    -fx-background-color: #F7931A;
+    -fx-text-fill: #1a1a1a;
+    -fx-font-weight: bold;
+    -fx-padding: 4 12;
+    -fx-background-radius: 4px;
+}
+
+.notification-retry-button:hover {
+    -fx-background-color: #ff9e2c;
+}

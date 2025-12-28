@@ -2,10 +2,10 @@ package com.wallet.app.controller;
 
 import com.wallet.app.model.TransactionModel;
 import com.wallet.app.model.WalletModel;
-import com.wallet.app.service.MockTransactionService;
-import com.wallet.app.service.MockWalletService;
 import com.wallet.app.service.TransactionService;
+import com.wallet.app.service.TransactionServiceImpl;
 import com.wallet.app.service.WalletService;
+import com.wallet.app.service.WalletServiceImpl;
 import com.wallet.app.util.CurrencyFormatter;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
@@ -74,8 +74,8 @@ public class HomeController {
     
     @FXML
     public void initialize() {
-        walletService = new MockWalletService();
-        transactionService = new MockTransactionService();
+        walletService = new WalletServiceImpl();
+        transactionService = new TransactionServiceImpl();
         
         // Setup custom cell factory for transactions
         setupRecentTransactionsCellFactory();
@@ -170,68 +170,95 @@ public class HomeController {
         XYChart.Series<Number, Number> series = new XYChart.Series<>();
         series.setName("Balance");
         
-        // Static predefined data points for each time filter
-        switch (timeFilter) {
-            case "1H":
-                series.getData().add(new XYChart.Data<>(0, 0.1520));
-                series.getData().add(new XYChart.Data<>(10, 0.1521));
-                series.getData().add(new XYChart.Data<>(20, 0.1522));
-                series.getData().add(new XYChart.Data<>(30, 0.1523));
-                series.getData().add(new XYChart.Data<>(40, 0.1523));
-                series.getData().add(new XYChart.Data<>(50, 0.1524));
-                series.getData().add(new XYChart.Data<>(60, 0.1523));
-                xAxis.setLabel("Minutes");
-                break;
-            case "1D":
-                series.getData().add(new XYChart.Data<>(0, 0.1500));
-                series.getData().add(new XYChart.Data<>(4, 0.1505));
-                series.getData().add(new XYChart.Data<>(8, 0.1510));
-                series.getData().add(new XYChart.Data<>(12, 0.1515));
-                series.getData().add(new XYChart.Data<>(16, 0.1520));
-                series.getData().add(new XYChart.Data<>(20, 0.1523));
-                series.getData().add(new XYChart.Data<>(24, 0.1523));
-                xAxis.setLabel("Hours");
-                break;
-            case "1W":
-                series.getData().add(new XYChart.Data<>(0, 0.1200));
-                series.getData().add(new XYChart.Data<>(1, 0.1250));
-                series.getData().add(new XYChart.Data<>(2, 0.1300));
-                series.getData().add(new XYChart.Data<>(3, 0.1350));
-                series.getData().add(new XYChart.Data<>(4, 0.1400));
-                series.getData().add(new XYChart.Data<>(5, 0.1450));
-                series.getData().add(new XYChart.Data<>(6, 0.1500));
-                series.getData().add(new XYChart.Data<>(7, 0.1523));
-                xAxis.setLabel("Days");
-                break;
-            case "1M":
-                series.getData().add(new XYChart.Data<>(0, 0.1000));
-                series.getData().add(new XYChart.Data<>(5, 0.1100));
-                series.getData().add(new XYChart.Data<>(10, 0.1200));
-                series.getData().add(new XYChart.Data<>(15, 0.1300));
-                series.getData().add(new XYChart.Data<>(20, 0.1400));
-                series.getData().add(new XYChart.Data<>(25, 0.1450));
-                series.getData().add(new XYChart.Data<>(30, 0.1523));
-                xAxis.setLabel("Days");
-                break;
-            case "1Y":
-                series.getData().add(new XYChart.Data<>(0, 0.0500));
-                series.getData().add(new XYChart.Data<>(2, 0.0700));
-                series.getData().add(new XYChart.Data<>(4, 0.0900));
-                series.getData().add(new XYChart.Data<>(6, 0.1100));
-                series.getData().add(new XYChart.Data<>(8, 0.1300));
-                series.getData().add(new XYChart.Data<>(10, 0.1450));
-                series.getData().add(new XYChart.Data<>(12, 0.1523));
-                xAxis.setLabel("Months");
-                break;
-            case "ALL":
-                series.getData().add(new XYChart.Data<>(0, 0.0100));
-                series.getData().add(new XYChart.Data<>(1, 0.0300));
-                series.getData().add(new XYChart.Data<>(2, 0.0600));
-                series.getData().add(new XYChart.Data<>(3, 0.0900));
-                series.getData().add(new XYChart.Data<>(4, 0.1200));
-                series.getData().add(new XYChart.Data<>(5, 0.1523));
-                xAxis.setLabel("Years");
-                break;
+        try {
+            // Fetch all transactions to build balance history
+            List<TransactionModel> allTransactions = transactionService.getTransactions();
+            
+            if (allTransactions.isEmpty()) {
+                // If no transactions, show current balance as flat line
+                double currentBalance = wallet.getBalanceBTC();
+                series.getData().add(new XYChart.Data<>(0, currentBalance));
+                series.getData().add(new XYChart.Data<>(1, currentBalance));
+            } else {
+                // Sort transactions by date (oldest first)
+                allTransactions.sort((a, b) -> a.getDate().compareTo(b.getDate()));
+                
+                // Calculate balance at each transaction point
+                double runningBalance = 0;
+                java.time.LocalDateTime now = java.time.LocalDateTime.now();
+                java.time.LocalDateTime startTime;
+                
+                // Determine time range based on filter
+                switch (timeFilter) {
+                    case "1H":
+                        startTime = now.minusHours(1);
+                        xAxis.setLabel("Minutes ago");
+                        break;
+                    case "1D":
+                        startTime = now.minusDays(1);
+                        xAxis.setLabel("Hours ago");
+                        break;
+                    case "1W":
+                        startTime = now.minusWeeks(1);
+                        xAxis.setLabel("Days ago");
+                        break;
+                    case "1M":
+                        startTime = now.minusMonths(1);
+                        xAxis.setLabel("Days ago");
+                        break;
+                    case "1Y":
+                        startTime = now.minusYears(1);
+                        xAxis.setLabel("Months ago");
+                        break;
+                    default: // "ALL"
+                        startTime = allTransactions.get(0).getDate();
+                        xAxis.setLabel("Time");
+                        break;
+                }
+                
+                // Filter transactions within time range
+                List<TransactionModel> filteredTxs = new java.util.ArrayList<>();
+                for (TransactionModel tx : allTransactions) {
+                    if (tx.getDate().isAfter(startTime) || timeFilter.equals("ALL")) {
+                        filteredTxs.add(tx);
+                    }
+                }
+                
+                // Calculate starting balance (before filtered transactions)
+                for (TransactionModel tx : allTransactions) {
+                    if (tx.getDate().isBefore(startTime) || tx.getDate().isEqual(startTime)) {
+                        if (tx.getStatus() == TransactionModel.Status.RECEIVED) {
+                            runningBalance += tx.getAmount();
+                        } else if (tx.getStatus() == TransactionModel.Status.SENT) {
+                            runningBalance -= tx.getAmount();
+                        }
+                    }
+                }
+                
+                // Add starting point
+                series.getData().add(new XYChart.Data<>(0, runningBalance));
+                
+                // Add data points for each transaction
+                int dataPointIndex = 1;
+                for (TransactionModel tx : filteredTxs) {
+                    if (tx.getStatus() == TransactionModel.Status.RECEIVED) {
+                        runningBalance += tx.getAmount();
+                    } else if (tx.getStatus() == TransactionModel.Status.SENT) {
+                        runningBalance -= tx.getAmount();
+                    }
+                    series.getData().add(new XYChart.Data<>(dataPointIndex++, runningBalance));
+                }
+                
+                // If no transactions in range, show flat line at starting balance
+                if (filteredTxs.isEmpty()) {
+                    series.getData().add(new XYChart.Data<>(1, runningBalance));
+                }
+            }
+        } catch (Exception e) {
+            // Fallback to showing current balance as flat line
+            double currentBalance = wallet.getBalanceBTC();
+            series.getData().add(new XYChart.Data<>(0, currentBalance));
+            series.getData().add(new XYChart.Data<>(1, currentBalance));
         }
         
         balanceChart.getData().add(series);
