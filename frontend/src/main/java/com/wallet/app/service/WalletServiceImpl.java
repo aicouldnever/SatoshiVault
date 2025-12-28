@@ -47,7 +47,7 @@ public class WalletServiceImpl extends ApiClient implements WalletService {
     }
     
     /**
-     * Login with passphrase and get wallet credentials
+     * Login with passphrase and get wallet credentials (legacy: passphrase only)
      */
     public static LoginResponse login(String passphrase) throws Exception {
         JsonObject requestBody = new JsonObject();
@@ -60,6 +60,34 @@ public class WalletServiceImpl extends ApiClient implements WalletService {
         String address = json.get("walletAddress").getAsString();
         
         return new LoginResponse(token, address);
+    }
+
+    /**
+     * Login with password + passphrase; backend will validate credentials
+     */
+    public static LoginResponse login(String password, String passphrase) throws Exception {
+        JsonObject requestBody = new JsonObject();
+        requestBody.addProperty("password", password);
+        requestBody.addProperty("passphrase", passphrase);
+
+        String response = post("/api/auth/login", requestBody);
+        JsonObject json = parseJson(response);
+
+        String token = json.get("token").getAsString();
+        String address = json.get("walletAddress").getAsString();
+
+        return new LoginResponse(token, address);
+    }
+
+    /**
+     * Register a new wallet (store password + passphrase)
+     */
+    public static void register(String password, String passphrase) throws Exception {
+        JsonObject requestBody = new JsonObject();
+        requestBody.addProperty("password", password);
+        requestBody.addProperty("passphrase", passphrase);
+
+        post("/api/auth/register", requestBody);
     }
     
     /**

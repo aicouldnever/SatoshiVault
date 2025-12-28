@@ -43,4 +43,10 @@ public class SecurityConfig {
         source.registerCorsConfiguration("/**", configuration);
         return source;
     }
+
+    // BCrypt password encoder bean for hashing user passwords
+    @Bean
+    public org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder passwordEncoder() {
+        return new org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder();
+    }
 }

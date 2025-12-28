@@ -110,7 +110,7 @@ public class LoginController {
         Task<WalletServiceImpl.LoginResponse> loginTask = new Task<WalletServiceImpl.LoginResponse>() {
             @Override
             protected WalletServiceImpl.LoginResponse call() throws Exception {
-                return WalletServiceImpl.login(passphrase);
+                return WalletServiceImpl.login(password, passphrase);
             }
         };
         

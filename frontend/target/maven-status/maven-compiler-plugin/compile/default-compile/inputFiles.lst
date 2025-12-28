@@ -1,28 +1,28 @@
-C:\Users\abdel\Documents\1- ENSA Marrakech\Java\1- Projet de Fin Module\SatoshiVault\frontend\src\main\java\com\wallet\app\model\TransactionModel.java
-C:\Users\abdel\Documents\1- ENSA Marrakech\Java\1- Projet de Fin Module\SatoshiVault\frontend\src\main\java\com\wallet\app\model\WalletModel.java
-C:\Users\abdel\Documents\1- ENSA Marrakech\Java\1- Projet de Fin Module\SatoshiVault\frontend\src\main\java\com\wallet\app\controller\HistoryController.java
-C:\Users\abdel\Documents\1- ENSA Marrakech\Java\1- Projet de Fin Module\SatoshiVault\frontend\src\main\java\com\wallet\app\service\TransactionServiceImpl.java
-C:\Users\abdel\Documents\1- ENSA Marrakech\Java\1- Projet de Fin Module\SatoshiVault\frontend\src\main\java\com\wallet\app\util\ConfigManager.java
-C:\Users\abdel\Documents\1- ENSA Marrakech\Java\1- Projet de Fin Module\SatoshiVault\frontend\src\main\java\com\wallet\app\controller\ReceiveController.java
-C:\Users\abdel\Documents\1- ENSA Marrakech\Java\1- Projet de Fin Module\SatoshiVault\frontend\src\main\java\com\wallet\app\util\ConversionUtil.java
-C:\Users\abdel\Documents\1- ENSA Marrakech\Java\1- Projet de Fin Module\SatoshiVault\frontend\src\main\java\com\wallet\app\controller\PassphraseGeneratorController.java
-C:\Users\abdel\Documents\1- ENSA Marrakech\Java\1- Projet de Fin Module\SatoshiVault\frontend\src\main\java\com\wallet\app\controller\SendController.java
-C:\Users\abdel\Documents\1- ENSA Marrakech\Java\1- Projet de Fin Module\SatoshiVault\frontend\src\main\java\com\wallet\app\controller\SettingsController.java
-C:\Users\abdel\Documents\1- ENSA Marrakech\Java\1- Projet de Fin Module\SatoshiVault\frontend\src\main\java\com\wallet\app\service\ApiClient.java
-C:\Users\abdel\Documents\1- ENSA Marrakech\Java\1- Projet de Fin Module\SatoshiVault\frontend\src\main\java\com\wallet\app\controller\AuthController.java
-C:\Users\abdel\Documents\1- ENSA Marrakech\Java\1- Projet de Fin Module\SatoshiVault\frontend\src\main\java\com\wallet\app\util\QRCodeUtil.java
-C:\Users\abdel\Documents\1- ENSA Marrakech\Java\1- Projet de Fin Module\SatoshiVault\frontend\src\main\java\com\wallet\app\MainApp.java
-C:\Users\abdel\Documents\1- ENSA Marrakech\Java\1- Projet de Fin Module\SatoshiVault\frontend\src\main\java\com\wallet\app\util\NotificationUtil.java
-C:\Users\abdel\Documents\1- ENSA Marrakech\Java\1- Projet de Fin Module\SatoshiVault\frontend\src\main\java\com\wallet\app\util\CurrencyFormatter.java
-C:\Users\abdel\Documents\1- ENSA Marrakech\Java\1- Projet de Fin Module\SatoshiVault\frontend\src\main\java\com\wallet\app\service\WalletService.java
-C:\Users\abdel\Documents\1- ENSA Marrakech\Java\1- Projet de Fin Module\SatoshiVault\frontend\src\main\java\com\wallet\app\controller\LoginController.java
-C:\Users\abdel\Documents\1- ENSA Marrakech\Java\1- Projet de Fin Module\SatoshiVault\frontend\src\main\java\com\wallet\app\service\MockWalletService.java
-C:\Users\abdel\Documents\1- ENSA Marrakech\Java\1- Projet de Fin Module\SatoshiVault\frontend\src\main\java\com\wallet\app\util\ThemeManager.java
-C:\Users\abdel\Documents\1- ENSA Marrakech\Java\1- Projet de Fin Module\SatoshiVault\frontend\src\main\java\com\wallet\app\service\MockTransactionService.java
-C:\Users\abdel\Documents\1- ENSA Marrakech\Java\1- Projet de Fin Module\SatoshiVault\frontend\src\main\java\com\wallet\app\service\TransactionService.java
-C:\Users\abdel\Documents\1- ENSA Marrakech\Java\1- Projet de Fin Module\SatoshiVault\frontend\src\main\java\com\wallet\app\service\WalletServiceImpl.java
-C:\Users\abdel\Documents\1- ENSA Marrakech\Java\1- Projet de Fin Module\SatoshiVault\frontend\src\main\java\com\wallet\app\controller\HomeController.java
-C:\Users\abdel\Documents\1- ENSA Marrakech\Java\1- Projet de Fin Module\SatoshiVault\frontend\src\main\java\com\wallet\app\controller\NavigationController.java
-C:\Users\abdel\Documents\1- ENSA Marrakech\Java\1- Projet de Fin Module\SatoshiVault\frontend\src\main\java\com\wallet\app\controller\WelcomeController.java
-C:\Users\abdel\Documents\1- ENSA Marrakech\Java\1- Projet de Fin Module\SatoshiVault\frontend\src\main\java\com\wallet\app\util\SessionManager.java
-C:\Users\abdel\Documents\1- ENSA Marrakech\Java\1- Projet de Fin Module\SatoshiVault\frontend\src\main\java\com\wallet\app\controller\PasswordSetupController.java
+C:\Users\zakar\Desktop\SatoshiVault\frontend\src\main\java\com\wallet\app\service\WalletService.java
+C:\Users\zakar\Desktop\SatoshiVault\frontend\src\main\java\com\wallet\app\util\ConfigManager.java
+C:\Users\zakar\Desktop\SatoshiVault\frontend\src\main\java\com\wallet\app\controller\HomeController.java
+C:\Users\zakar\Desktop\SatoshiVault\frontend\src\main\java\com\wallet\app\model\TransactionModel.java
+C:\Users\zakar\Desktop\SatoshiVault\frontend\src\main\java\com\wallet\app\util\NotificationUtil.java
+C:\Users\zakar\Desktop\SatoshiVault\frontend\src\main\java\com\wallet\app\controller\PasswordSetupController.java
+C:\Users\zakar\Desktop\SatoshiVault\frontend\src\main\java\com\wallet\app\controller\SettingsController.java
+C:\Users\zakar\Desktop\SatoshiVault\frontend\src\main\java\com\wallet\app\service\TransactionServiceImpl.java
+C:\Users\zakar\Desktop\SatoshiVault\frontend\src\main\java\com\wallet\app\controller\NavigationController.java
+C:\Users\zakar\Desktop\SatoshiVault\frontend\src\main\java\com\wallet\app\controller\HistoryController.java
+C:\Users\zakar\Desktop\SatoshiVault\frontend\src\main\java\com\wallet\app\controller\ReceiveController.java
+C:\Users\zakar\Desktop\SatoshiVault\frontend\src\main\java\com\wallet\app\service\TransactionService.java
+C:\Users\zakar\Desktop\SatoshiVault\frontend\src\main\java\com\wallet\app\controller\AuthController.java
+C:\Users\zakar\Desktop\SatoshiVault\frontend\src\main\java\com\wallet\app\service\MockTransactionService.java
+C:\Users\zakar\Desktop\SatoshiVault\frontend\src\main\java\com\wallet\app\util\SessionManager.java
+C:\Users\zakar\Desktop\SatoshiVault\frontend\src\main\java\com\wallet\app\util\QRCodeUtil.java
+C:\Users\zakar\Desktop\SatoshiVault\frontend\src\main\java\com\wallet\app\controller\SendController.java
+C:\Users\zakar\Desktop\SatoshiVault\frontend\src\main\java\com\wallet\app\controller\LoginController.java
+C:\Users\zakar\Desktop\SatoshiVault\frontend\src\main\java\com\wallet\app\controller\PassphraseGeneratorController.java
+C:\Users\zakar\Desktop\SatoshiVault\frontend\src\main\java\com\wallet\app\service\MockWalletService.java
+C:\Users\zakar\Desktop\SatoshiVault\frontend\src\main\java\com\wallet\app\util\CurrencyFormatter.java
+C:\Users\zakar\Desktop\SatoshiVault\frontend\src\main\java\com\wallet\app\util\ThemeManager.java
+C:\Users\zakar\Desktop\SatoshiVault\frontend\src\main\java\com\wallet\app\MainApp.java
+C:\Users\zakar\Desktop\SatoshiVault\frontend\src\main\java\com\wallet\app\util\ConversionUtil.java
+C:\Users\zakar\Desktop\SatoshiVault\frontend\src\main\java\com\wallet\app\service\WalletServiceImpl.java
+C:\Users\zakar\Desktop\SatoshiVault\frontend\src\main\java\com\wallet\app\model\WalletModel.java
+C:\Users\zakar\Desktop\SatoshiVault\frontend\src\main\java\com\wallet\app\controller\WelcomeController.java
+C:\Users\zakar\Desktop\SatoshiVault\frontend\src\main\java\com\wallet\app\service\ApiClient.java

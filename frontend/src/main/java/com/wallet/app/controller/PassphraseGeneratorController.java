@@ -129,17 +129,43 @@ public class PassphraseGeneratorController {
             errorLabel.setVisible(true);
             return;
         }
-        
 
-        
-        NotificationUtil.showSuccess("Success", "Wallet registration completed!");
-        
-        try {
-            loadWelcomeView();
-        } catch (Exception e) {
-            errorLabel.setText("Error: " + e.getMessage());
+        String password = PasswordSetupController.getSetupPassword();
+        if (password == null || password.isEmpty()) {
+            errorLabel.setText("Password not available. Please go back and set a password.");
             errorLabel.setVisible(true);
+            return;
         }
+
+        // Disable finish while processing
+        finishButton.setDisable(true);
+        errorLabel.setVisible(false);
+
+        // Run registration in background thread so UI doesn't block
+        new Thread(() -> {
+            try {
+                com.wallet.app.service.WalletServiceImpl.register(password, generatedPassphrase);
+
+                // Clear stored password
+                com.wallet.app.controller.PasswordSetupController.clearSetupPassword();
+
+                javafx.application.Platform.runLater(() -> {
+                    NotificationUtil.showSuccess("Success", "Wallet registration completed!");
+                    try {
+                        loadWelcomeView();
+                    } catch (Exception e) {
+                        errorLabel.setText("Error: " + e.getMessage());
+                        errorLabel.setVisible(true);
+                    }
+                });
+            } catch (Exception e) {
+                javafx.application.Platform.runLater(() -> {
+                    errorLabel.setText("Registration failed: " + e.getMessage());
+                    errorLabel.setVisible(true);
+                    finishButton.setDisable(false);
+                });
+            }
+        }).start();
     }
     
     @FXML

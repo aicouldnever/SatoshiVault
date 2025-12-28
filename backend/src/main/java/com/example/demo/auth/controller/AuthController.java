@@ -18,7 +18,15 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity<AuthResponse> login(@RequestBody AuthRequest request) {
         try {
-            AuthResponse response = authService.authenticateWithPassphrase(request.getPassphrase());
+            AuthResponse response;
+            // If password provided, validate both password + passphrase against DB
+            if (request.getPassword() != null && !request.getPassword().isBlank()) {
+                response = authService.authenticateWithCredentials(request.getPassword(), request.getPassphrase());
+            } else {
+                // Backwards-compatible: authenticate only with passphrase
+                response = authService.authenticateWithPassphrase(request.getPassphrase());
+            }
+
             return ResponseEntity.ok(response);
         } catch (Exception e) {
             return ResponseEntity.badRequest()
@@ -41,6 +49,16 @@ public class AuthController {
         try {
             String walletAddress = authService.generateWalletFromPassphrase(request.getPassphrase());
             return ResponseEntity.ok(walletAddress);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Error: " + e.getMessage());
+        }
+    }
+
+    @PostMapping("/register")
+    public ResponseEntity<String> register(@RequestBody com.example.demo.auth.dto.RegisterRequest request) {
+        try {
+            String result = authService.register(request.getPassword(), request.getPassphrase());
+            return ResponseEntity.ok(result);
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("Error: " + e.getMessage());
         }
