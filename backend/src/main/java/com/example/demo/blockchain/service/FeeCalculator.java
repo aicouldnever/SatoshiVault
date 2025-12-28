@@ -44,8 +44,7 @@ public class FeeCalculator {
      * @return Estimated size in bytes
      */
     public int calculateTransactionSize(int inputs, int outputs) {
-        // Simplified calculation - actual transaction size depends on script types
-        // This assumes legacy P2PKH transactions
+        // Assumes legacy P2PKH transactions
         int size = BASE_TX_SIZE + (inputs * INPUT_SIZE) + (outputs * OUTPUT_SIZE);
         logger.debug("Calculated transaction size: {} bytes", size);
         return size;

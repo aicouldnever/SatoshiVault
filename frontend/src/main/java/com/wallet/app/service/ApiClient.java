@@ -32,8 +32,7 @@ public class ApiClient {
                 .uri(URI.create(url))
                 .timeout(Duration.ofMillis(ConfigManager.getBackendTimeout()))
                 .GET();
-        
-        // Add auth token if available
+    
         if (SessionManager.getAuthToken() != null) {
             requestBuilder.header("Authorization", "Bearer " + SessionManager.getAuthToken());
         }

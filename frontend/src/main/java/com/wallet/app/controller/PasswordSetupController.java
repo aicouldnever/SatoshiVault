@@ -14,8 +14,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 /**
- * Controller for Password Setup view (Layer 2)
- * Handles password creation and validation before moving to passphrase generation
+ * Password setup controller - validates password strength
  */
 public class PasswordSetupController {
     
@@ -34,11 +33,10 @@ public class PasswordSetupController {
     @FXML
     private Label errorLabel;
     
-    private static String setupPassword; // Store password for use in next layer
+    private static String setupPassword;
     
     @FXML
     public void initialize() {
-        // Initialize password setup view
     }
     
     @FXML
@@ -46,10 +44,8 @@ public class PasswordSetupController {
         String password = passwordField.getText();
         String confirmPassword = confirmPasswordField.getText();
         
-        // Clear previous error
         errorLabel.setVisible(false);
         
-        // Validate inputs
         if (password.isEmpty()) {
             showError("Please enter a password");
             return;
@@ -65,16 +61,12 @@ public class PasswordSetupController {
             return;
         }
         
-        // Validate password strength
         if (!isPasswordStrong(password)) {
             showError("Password does not meet the requirements");
             return;
         }
         
-        // Store password for next layer
         setupPassword = password;
-        
-        // Navigate to Layer 3 - Passphrase Generation
         navigateToPassphraseGeneration();
     }
     
@@ -124,8 +116,7 @@ public class PasswordSetupController {
     }
     
     /**
-     * Validates password strength
-     * Requirements: at least 8 chars, uppercase, lowercase, number, special char
+     * Validates password meets strength requirements
      */
     private boolean isPasswordStrong(String password) {
         if (password.length() < 8) {
@@ -146,14 +137,14 @@ public class PasswordSetupController {
     }
     
     /**
-     * Get the stored password for use in next layer
+     * Get stored password
      */
     public static String getSetupPassword() {
         return setupPassword;
     }
     
     /**
-     * Clear stored password
+     * Clear password
      */
     public static void clearSetupPassword() {
         setupPassword = null;

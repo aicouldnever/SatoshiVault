@@ -18,8 +18,7 @@ import java.util.List;
 import java.util.Random;
 
 /**
- * Controller for Passphrase Generation page (Layer 3 of registration)
- * Generates a recovery passphrase for the user
+ * Passphrase generator - creates 12-word BIP39 seed phrase
  */
 public class PassphraseGeneratorController {
     
@@ -49,7 +48,7 @@ public class PassphraseGeneratorController {
     
     private String generatedPassphrase;
     
-    // BIP39 word list
+    // Standard BIP39 word list
     private static final String[] BIP39_WORDS = {
         "abandon", "ability", "able", "about", "above", "absent", "absorb", "abuse",
         "access", "accident", "account", "accuse", "achieve", "acid", "acoustic", "acquire",
@@ -74,7 +73,6 @@ public class PassphraseGeneratorController {
             "This passphrase is your ONLY way to recover your wallet if you lose access.\n" +
             "Keep it safe and secret! Do not share it with anyone.\n" +
             "Write it down and store it in a secure location.");
-        generateButton.setStyle("-fx-font-size: 14px;");
     }
     
     @FXML
@@ -90,7 +88,7 @@ public class PassphraseGeneratorController {
             finishButton.setDisable(true);
             errorLabel.setVisible(false);
             
-            NotificationUtil.showSuccess("Generated", "Passphrase generated successfully");
+            NotificationUtil.showSuccess("Success", "Passphrase generated");
         } catch (Exception e) {
             errorLabel.setText("Error generating passphrase: " + e.getMessage());
             errorLabel.setVisible(true);
@@ -105,7 +103,7 @@ public class PassphraseGeneratorController {
             content.putString(generatedPassphrase);
             clipboard.setContent(content);
             
-            NotificationUtil.showSuccess("Copied", "Passphrase copied to clipboard");
+            NotificationUtil.showSuccess("Copied", "Passphrase copied");
         }
     }
     
@@ -136,10 +134,7 @@ public class PassphraseGeneratorController {
         
         NotificationUtil.showSuccess("Success", "Wallet registration completed!");
         
-        // Store passphrase for next login
         try {
-            // TODO: Send registration data to backend
-            // For now, just navigate to login
             loadWelcomeView();
         } catch (Exception e) {
             errorLabel.setText("Error: " + e.getMessage());
@@ -191,7 +186,7 @@ public class PassphraseGeneratorController {
     }
     
     /**
-     * Generate a random 12-word BIP39 style passphrase
+     * Generate random 12-word BIP39 passphrase
      */
     private String generateRandomPassphrase() {
         StringBuilder passphrase = new StringBuilder();

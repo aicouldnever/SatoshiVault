@@ -13,8 +13,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 /**
- * Controller for the Welcome/Home page of authentication flow
- * Displays app name and options to login or register
+ * Welcome controller - login/register entry point
  */
 public class WelcomeController {
     
@@ -29,7 +28,6 @@ public class WelcomeController {
     
     @FXML
     public void initialize() {
-        // Initialize welcome page
     }
     
     @FXML
@@ -49,8 +47,6 @@ public class WelcomeController {
             stage.setHeight(650);
             stage.setScene(scene);
             stage.show();
-            
-            NotificationUtil.showSuccess("Navigation", "Going to login");
         } catch (IOException e) {
             NotificationUtil.showError("Error", "Failed to load login view: " + e.getMessage());
         }
@@ -73,8 +69,6 @@ public class WelcomeController {
             stage.setHeight(650);
             stage.setScene(scene);
             stage.show();
-            
-            NotificationUtil.showSuccess("Navigation", "Going to registration");
         } catch (IOException e) {
             NotificationUtil.showError("Error", "Failed to load registration view: " + e.getMessage());
         }

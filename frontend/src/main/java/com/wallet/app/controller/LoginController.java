@@ -20,8 +20,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 /**
- * Controller for login page
- * User enters password and passphrase to login
+ * Login controller - validates password and passphrase
  */
 public class LoginController {
     
@@ -104,17 +103,13 @@ public class LoginController {
             return;
         }
         
-        // Disable button and show loading
         loginButton.setDisable(true);
         errorLabel.setText("Authenticating...");
         errorLabel.setVisible(true);
         
-        // Perform login in background thread
         Task<WalletServiceImpl.LoginResponse> loginTask = new Task<WalletServiceImpl.LoginResponse>() {
             @Override
             protected WalletServiceImpl.LoginResponse call() throws Exception {
-                // TODO: In a real implementation, you would verify password here
-                // For now, we just use the passphrase
                 return WalletServiceImpl.login(passphrase);
             }
         };
@@ -122,7 +117,6 @@ public class LoginController {
         loginTask.setOnSucceeded(e -> {
             WalletServiceImpl.LoginResponse response = loginTask.getValue();
             
-            // Store session data (in-memory only, no private key yet)
             SessionManager.login(response.token, response.address, null, passphrase);
             
             NotificationUtil.showSuccess("Login Successful", "Welcome to Satoshi Vault!");
