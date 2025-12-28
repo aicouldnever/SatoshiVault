@@ -12,152 +12,86 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane fitToWidth="true" fitToHeight="true" VBox.vgrow="ALWAYS" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wallet.app.controller.SettingsController">
-<VBox spacing="20.0">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-    </padding>
+<ScrollPane fitToWidth="true" style="-fx-border-color: transparent; -fx-padding: 0;" VBox.vgrow="ALWAYS" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wallet.app.controller.SettingsController">
+<VBox spacing="15.0" style="-fx-padding: 15;">
     
     <Label text="Settings">
         <font>
-            <Font name="System Bold" size="20.0" />
+            <Font name="System Bold" size="18.0" />
         </font>
     </Label>
     
     <!-- Private Key Management -->
-    <VBox spacing="10.0">
-        <VBox.margin>
-            <Insets top="20.0" />
-        </VBox.margin>
-        
+    <VBox spacing="8.0" maxWidth="600.0">
         <Label text="Private Key Management">
             <font>
-                <Font name="System Bold" size="14.0" />
+                <Font name="System Bold" size="13.0" />
             </font>
         </Label>
         
-        <Label fx:id="privateKeyStatusLabel" text="⚠ No private key set - transactions disabled">
-            <font>
-                <Font size="12.0" />
-            </font>
-        </Label>
-        
-        <Label text="Enter your private key (WIF format) to enable sending transactions:">
+        <Label fx:id="privateKeyStatusLabel" text="No private key set - transactions disabled" style="-fx-text-fill: #f59e0b;">
             <font>
                 <Font size="11.0" />
             </font>
-            <VBox.margin>
-                <Insets top="10.0" />
-            </VBox.margin>
         </Label>
         
-        <PasswordField fx:id="privateKeyField" promptText="Enter private key (e.g., cVt4o7BGAig1UXywgGSmARhxMdzP5qvQsxK...)" prefWidth="500.0">
-            <VBox.margin>
-                <Insets top="5.0" />
-            </VBox.margin>
-        </PasswordField>
-        
-        <Label text="Derived Address (for verification):">
-            <font>
-                <Font size="11.0" />
-            </font>
-            <VBox.margin>
-                <Insets top="10.0" />
-            </VBox.margin>
-        </Label>
-        
-        <TextField fx:id="verifyAddressField" editable="false" promptText="Address will appear here after setting key" prefWidth="500.0">
-            <VBox.margin>
-                <Insets top="5.0" />
-            </VBox.margin>
-        </TextField>
-        
-        <HBox spacing="10.0">
-            <VBox.margin>
-                <Insets top="10.0" />
-            </VBox.margin>
-            
-            <Button fx:id="setPrivateKeyButton" onAction="#handleSetPrivateKey" text="Set Private Key" prefWidth="150.0">
-                <font>
-                    <Font size="12.0" />
-                </font>
-            </Button>
-            
-            <Button fx:id="generateNewKeypairButton" onAction="#handleGenerateNewKeypair" text="Generate New Keypair" prefWidth="180.0">
-                <font>
-                    <Font size="12.0" />
-                </font>
-            </Button>
-            
-            <Button onAction="#handleClearPrivateKey" text="Clear" prefWidth="100.0">
-                <font>
-                    <Font size="12.0" />
-                </font>
-            </Button>
-        </HBox>
-        
-        <Label text="⚠ Private key is stored in memory only and will be lost when you close the app" style="-fx-text-fill: #f59e0b;">
+        <Label text="Enter your private key (WIF format) to enable sending transactions:" wrapText="true">
             <font>
                 <Font size="10.0" />
             </font>
-            <VBox.margin>
-                <Insets top="5.0" />
-            </VBox.margin>
+        </Label>
+        
+        <PasswordField fx:id="privateKeyField" promptText="Enter private key..." maxWidth="Infinity" />
+        
+        <Label text="Derived Address (for verification):" style="-fx-text-fill: #666;">
+            <font>
+                <Font size="10.0" />
+            </font>
+        </Label>
+        
+        <TextField fx:id="verifyAddressField" editable="false" promptText="Address will appear here" maxWidth="Infinity" />
+        
+        <HBox spacing="8.0" alignment="CENTER_LEFT">
+            <Button fx:id="setPrivateKeyButton" onAction="#handleSetPrivateKey" text="Set Key" minWidth="90.0" style="-fx-font-size: 11;" />
+            <Button fx:id="generateNewKeypairButton" onAction="#handleGenerateNewKeypair" text="Generate New" minWidth="100.0" style="-fx-font-size: 11;" />
+            <Button onAction="#handleClearPrivateKey" text="Clear" minWidth="70.0" style="-fx-font-size: 11;" />
+        </HBox>
+        
+        <Label text="Private key is stored in memory only" style="-fx-text-fill: #f59e0b;" wrapText="true">
+            <font>
+                <Font size="9.0" />
+            </font>
         </Label>
     </VBox>
     
-    <Separator />
+    <Separator maxWidth="Infinity" />
     
     <!-- Appearance Settings -->
-    <VBox spacing="10.0">
-        <VBox.margin>
-            <Insets top="10.0" />
-        </VBox.margin>
-        
+    <VBox spacing="8.0">
         <Label text="Appearance">
             <font>
-                <Font name="System Bold" size="14.0" />
+                <Font name="System Bold" size="13.0" />
             </font>
         </Label>
         
         <HBox spacing="10.0" alignment="CENTER_LEFT">
-            <VBox.margin>
-                <Insets top="5.0" />
-            </VBox.margin>
-            
             <CheckBox fx:id="darkThemeToggle" onAction="#handleDarkThemeToggle" />
-            <Label text="Dark Theme (Bitcoin Orange)">
-                <font>
-                    <Font size="13.0" />
-                </font>
-            </Label>
+            <Label text="Dark Theme (Bitcoin Orange)" style="-fx-font-size: 12;" />
         </HBox>
     </VBox>
     
-    <Separator />
+    <Separator maxWidth="Infinity" />
     
-    <VBox spacing="10.0">
-        <VBox.margin>
-            <Insets top="10.0" />
-        </VBox.margin>
-        
+    <!-- Application Information -->
+    <VBox spacing="8.0">
         <Label text="Application Information">
             <font>
-                <Font name="System Bold" size="14.0" />
+                <Font name="System Bold" size="13.0" />
             </font>
         </Label>
         
-        <Label text="Version: 1.0.0">
-            <font>
-                <Font size="13.0" />
-            </font>
-        </Label>
-        
-        <Label text="Network: Bitcoin Testnet3">
-            <font>
-                <Font size="13.0" />
-            </font>
-        </Label>
+        <Label text="Version: 1.0.0" style="-fx-font-size: 11;" />
+        <Label text="Network: Bitcoin Testnet3" style="-fx-font-size: 11;" />
     </VBox>
 </VBox>
 </ScrollPane>

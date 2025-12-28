@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 
 <ScrollPane fitToWidth="true" fitToHeight="true" VBox.vgrow="ALWAYS" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wallet.app.controller.ReceiveController">
-<VBox spacing="20.0">
+<VBox spacing="15.0" alignment="TOP_CENTER">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
@@ -22,18 +22,18 @@
     </Label>
     
     <!-- QR Code Placeholder -->
-    <VBox alignment="CENTER" spacing="10.0">
+    <VBox alignment="CENTER" spacing="10.0" maxWidth="400.0">
         <VBox.margin>
-            <Insets top="20.0" />
+            <Insets top="15.0" />
         </VBox.margin>
         
-        <ImageView fx:id="qrPlaceholder" fitWidth="300.0" fitHeight="300.0" preserveRatio="true" />
+        <ImageView fx:id="qrPlaceholder" fitWidth="280.0" fitHeight="280.0" preserveRatio="true" />
     </VBox>
     
     <!-- Bitcoin Address -->
-    <VBox spacing="10.0" alignment="CENTER">
+    <VBox spacing="10.0" alignment="CENTER" maxWidth="500.0">
         <VBox.margin>
-            <Insets top="20.0" />
+            <Insets top="15.0" />
         </VBox.margin>
         
         <Label text="Your Bitcoin Address">
@@ -42,46 +42,40 @@
             </font>
         </Label>
         
-        <Label fx:id="addressLabel" text="bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh" styleClass="address-label">
+        <Label fx:id="addressLabel" text="bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh" styleClass="address-label" wrapText="true">
             <font>
-                <Font name="System Monospaced" size="12.0" />
+                <Font name="System Monospaced" size="11.0" />
             </font>
         </Label>
     </VBox>
     
     <!-- Action Buttons -->
-    <HBox spacing="15.0" alignment="CENTER">
+    <HBox spacing="12.0" alignment="CENTER">
         <VBox.margin>
             <Insets top="10.0" />
         </VBox.margin>
         
-        <Button onAction="#handleCopyAddress" text="Copy Address" prefWidth="150.0">
-            <font>
-                <Font size="13.0" />
-            </font>
+        <Button onAction="#handleCopyAddress" text="Copy Address" minWidth="120.0" style="-fx-font-size: 12;">
         </Button>
         
-        <Button onAction="#handleShareAddress" text="Share" prefWidth="150.0">
-            <font>
-                <Font size="13.0" />
-            </font>
+        <Button onAction="#handleShareAddress" text="Share" minWidth="100.0" style="-fx-font-size: 12;">
         </Button>
     </HBox>
     
     <!-- Info Text -->
     <VBox spacing="5.0" alignment="CENTER">
         <VBox.margin>
-            <Insets top="20.0" />
+            <Insets top="15.0" />
         </VBox.margin>
         
-        <Label text="Native SegWit address (bc1...)">
+        <Label text="Native SegWit address (bc1...)" style="-fx-text-fill: #999;">
             <font>
-                <Font size="11.0" />
+                <Font size="10.0" />
             </font>
         </Label>
-        <Label text="Lower fees and faster confirmations">
+        <Label text="Lower fees and faster confirmations" style="-fx-text-fill: #999;">
             <font>
-                <Font size="11.0" />
+                <Font size="10.0" />
             </font>
         </Label>
     </VBox>
