@@ -51,7 +51,7 @@
                     <Font name="System Bold" size="14.0" />
                 </font>
             </Label>
-            <TextField fx:id="passphraseField" promptText="Enter your 12-word seed phrase" prefWidth="400.0" wrapText="true" />
+            <TextField fx:id="passphraseField" promptText="Enter your 12-word seed phrase" prefWidth="400.0" />
         </VBox>
         
         <!-- Error Label -->

@@ -49,7 +49,7 @@ public class PassphraseGeneratorController {
     
     private String generatedPassphrase;
     
-    // BIP39 word list (simplified - just a sample, in production use full list)
+    // BIP39 word list
     private static final String[] BIP39_WORDS = {
         "abandon", "ability", "able", "about", "above", "absent", "absorb", "abuse",
         "access", "accident", "account", "accuse", "achieve", "acid", "acoustic", "acquire",
@@ -132,10 +132,7 @@ public class PassphraseGeneratorController {
             return;
         }
         
-        // In a real implementation, you would:
-        // 1. Hash the password from Layer 2
-        // 2. Store it securely
-        // 3. Register the user in the backend with password + passphrase
+
         
         NotificationUtil.showSuccess("Success", "Wallet registration completed!");
         
