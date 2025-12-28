@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="TOP_CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wallet.app.controller.PassphraseGeneratorController">
+    <padding>
+        <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
+    </padding>
+    
+    <!-- Header -->
+    <HBox alignment="CENTER_LEFT" spacing="15.0">
+        <Button fx:id="backButton" text="← Back" onAction="#handleBack" style="-fx-font-size: 12;">
+            <HBox.margin>
+                <Insets right="20.0" />
+            </HBox.margin>
+        </Button>
+        <Label text="Satoshi Vault - Registration">
+            <font>
+                <Font name="System Bold" size="28.0" />
+            </font>
+        </Label>
+    </HBox>
+    
+    <!-- Instruction Label -->
+    <Label fx:id="instructionLabel" wrapText="true" style="-fx-text-fill: #666;">
+        <font>
+            <Font size="13.0" />
+        </font>
+        <VBox.margin>
+            <Insets top="15.0" bottom="15.0" />
+        </VBox.margin>
+    </Label>
+    
+    <!-- Generated Passphrase Display -->
+    <VBox spacing="10.0">
+        <Label text="Your Recovery Seed Phrase (12 words)">
+            <font>
+                <Font name="System Bold" size="12.0" />
+            </font>
+        </Label>
+        <TextArea fx:id="passphraseTextArea" prefHeight="120.0" prefWidth="400.0" wrapText="true" editable="false" style="-fx-control-inner-background: #f5f5f5; -fx-font-family: monospace; -fx-font-size: 12;" />
+        <Label text="⚠ This is your ONLY recovery phrase. Store it safely!" textFill="#d32f2f" style="-fx-font-weight: bold;">
+            <font>
+                <Font size="11.0" />
+            </font>
+        </Label>
+    </VBox>
+    
+    <!-- Action Buttons -->
+    <HBox spacing="15.0" alignment="CENTER">
+        <VBox.margin>
+            <Insets top="15.0" />
+        </VBox.margin>
+        
+        <!-- Generate Button -->
+        <Button fx:id="generateButton" onAction="#handleGeneratePassphrase" text="Generate Passphrase" prefWidth="220.0" prefHeight="40.0">
+            <font>
+                <Font size="13.0" />
+            </font>
+        </Button>
+        
+        <!-- Copy Button -->
+        <Button fx:id="copyButton" onAction="#handleCopyPassphrase" text="Copy to Clipboard" prefWidth="150.0" prefHeight="40.0" disable="true">
+            <font>
+                <Font size="13.0" />
+            </font>
+        </Button>
+    </HBox>
+    
+    <!-- Confirmation Section -->
+    <VBox spacing="12.0" style="-fx-border-color: #e0e0e0; -fx-border-radius: 5; -fx-padding: 15;">
+        <VBox.margin>
+            <Insets top="20.0" />
+        </VBox.margin>
+        
+        <Label text="Confirmation" style="-fx-text-fill: #d32f2f; -fx-font-weight: bold;">
+            <font>
+                <Font size="12.0" />
+            </font>
+        </Label>
+        
+        <CheckBox fx:id="confirmCheckBox" onAction="#handleConfirmCheckBox" text="I have saved and stored my recovery phrase in a safe location" />
+        
+        <Label text="By checking this box, you confirm you have written down and safely stored your recovery phrase." wrapText="true" style="-fx-text-fill: #999;">
+            <font>
+                <Font size="11.0" />
+            </font>
+        </Label>
+    </VBox>
+    
+    <!-- Error Label -->
+    <Label fx:id="errorLabel" styleClass="error-label" visible="false" textFill="#d32f2f">
+        <VBox.margin>
+            <Insets top="15.0" />
+        </VBox.margin>
+    </Label>
+    
+    <!-- Finish Button -->
+    <Button fx:id="finishButton" onAction="#handleFinish" text="Finish Registration" prefWidth="300.0" prefHeight="50.0" disable="true" style="-fx-font-size: 14;">
+        <VBox.margin>
+            <Insets top="20.0" />
+        </VBox.margin>
+    </Button>
+</VBox>
