@@ -29,10 +29,10 @@ public class JwtUtil {
         claims.put("walletAddress", walletAddress);
 
         return Jwts.builder()
-                .claims(claims)
-                .subject(walletAddress)
-                .issuedAt(new Date())
-                .expiration(new Date(System.currentTimeMillis() + expiration))
+                .setClaims(claims)
+                .setSubject(walletAddress)
+                .setIssuedAt(new Date())
+                .setExpiration(new Date(System.currentTimeMillis() + expiration))
                 .signWith(getSigningKey())
                 .compact();
     }
@@ -40,9 +40,9 @@ public class JwtUtil {
     public boolean validateToken(String token) {
         try {
             Jwts.parser()
-                    .verifyWith(getSigningKey())
+                    .setSigningKey(getSigningKey())
                     .build()
-                    .parseSignedClaims(token);
+                    .parseClaimsJws(token);
             return true;
         } catch (Exception e) {
             return false;
@@ -51,10 +51,10 @@ public class JwtUtil {
 
     public String getWalletAddressFromToken(String token) {
         Claims claims = Jwts.parser()
-                .verifyWith(getSigningKey())
+                .setSigningKey(getSigningKey())
                 .build()
-                .parseSignedClaims(token)
-                .getPayload();
+                .parseClaimsJws(token)
+                .getBody();
         return claims.getSubject();
     }
 }

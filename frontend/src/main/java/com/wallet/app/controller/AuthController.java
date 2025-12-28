@@ -137,13 +137,16 @@ public class AuthController {
             Parent root = loader.load();
             
             Stage stage = (Stage) recoveryPhraseField.getScene().getWindow();
-            Scene scene = new Scene(root, 1280, 720);
+            Scene scene = new Scene(root, 900, 650);
             
             // Apply theme based on user preference
             ThemeManager.applyTheme(scene);
             
-            // Set fixed window size
+            // Set fixed window size and prevent fullscreen
             stage.setResizable(false);
+            stage.setFullScreen(false);
+            stage.setWidth(900);
+            stage.setHeight(650);
             stage.setScene(scene);
             stage.setTitle("Bitcoin Wallet");
         } catch (IOException e) {
