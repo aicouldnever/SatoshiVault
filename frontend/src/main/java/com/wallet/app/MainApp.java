@@ -11,8 +11,8 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        // Load authentication view
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/wallet/app/view/auth/AuthView.fxml"));
+        // Load welcome view (Layer 1)
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/wallet/app/view/auth/WelcomeView.fxml"));
         Parent root = loader.load();
         
         Scene scene = new Scene(root, 900, 650);
@@ -20,7 +20,7 @@ public class MainApp extends Application {
         // Apply theme based on user preference
         ThemeManager.applyTheme(scene);
         
-        primaryStage.setTitle("Bitcoin Wallet - Login");
+        primaryStage.setTitle("Satoshi Vault - Welcome");
         primaryStage.setResizable(false);
         primaryStage.setScene(scene);
         primaryStage.show();
