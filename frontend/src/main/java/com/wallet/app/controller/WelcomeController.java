@@ -39,7 +39,7 @@ public class WelcomeController {
             Parent root = loader.load();
             
             Stage stage = (Stage) loginButton.getScene().getWindow();
-            Scene scene = new Scene(root, 900, 650);
+            Scene scene = new Scene(root, 1100, 700);
             
             ThemeManager.applyTheme(scene);
             
@@ -63,7 +63,7 @@ public class WelcomeController {
             Parent root = loader.load();
             
             Stage stage = (Stage) registerButton.getScene().getWindow();
-            Scene scene = new Scene(root, 900, 650);
+            Scene scene = new Scene(root, 1100, 700);
             
             ThemeManager.applyTheme(scene);
             

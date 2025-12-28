@@ -15,7 +15,7 @@ public class MainApp extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/wallet/app/view/auth/WelcomeView.fxml"));
         Parent root = loader.load();
         
-        Scene scene = new Scene(root, 900, 650);
+        Scene scene = new Scene(root, 1100, 700);
         
         // Apply theme based on user preference
         ThemeManager.applyTheme(scene);

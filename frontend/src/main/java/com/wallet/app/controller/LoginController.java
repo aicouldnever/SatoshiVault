@@ -154,7 +154,7 @@ public class LoginController {
             Parent root = loader.load();
             
             Stage stage = (Stage) backButton.getScene().getWindow();
-            Scene scene = new Scene(root, 900, 650);
+            Scene scene = new Scene(root, 1100, 700);
             
             ThemeManager.applyTheme(scene);
             
@@ -175,7 +175,7 @@ public class LoginController {
             Parent root = loader.load();
             
             Stage stage = (Stage) passphraseField.getScene().getWindow();
-            Scene scene = new Scene(root, 900, 650);
+            Scene scene = new Scene(root, 1100, 700);
             
             ThemeManager.applyTheme(scene);
             

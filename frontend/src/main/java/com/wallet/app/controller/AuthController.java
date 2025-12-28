@@ -137,7 +137,7 @@ public class AuthController {
             Parent root = loader.load();
             
             Stage stage = (Stage) recoveryPhraseField.getScene().getWindow();
-            Scene scene = new Scene(root, 900, 650);
+            Scene scene = new Scene(root, 1100, 700);
             
             // Apply theme based on user preference
             ThemeManager.applyTheme(scene);
